@@ -1,0 +1,45 @@
+body{
+    width: 80%;
+    margin: auto;   
+}
+.comments {
+    
+}
+.comment {
+    border: 1px solid black;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 15px;
+    padding-left: 20px;
+}
+.quoteCreate {
+    text-align: center;
+}
+textarea {
+    resize: none;
+ }
+.quoteCreate__form {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    flex-direction: column;
+    margin: auto;
+}
+.quotes {
+    position: relative;
+}
+
+.quote__container {
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
