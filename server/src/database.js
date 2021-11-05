@@ -19,7 +19,7 @@ async function connectDatabase() {
 
 	try {
 		await client.connect()
-		console.log('Connected correctly to server')
+		console.log('Connected corresctly to server')
 
     
     const collection = client.db("Quote").collection("quotes");
