@@ -4,7 +4,8 @@ import createServer from "./server.js";
 import connectDatabase from "./database.js";
 
 const appName = "Server API";
-const port = process.env.PORT || 8080;
+const port = 8080;
+// const port = process.env.PORT || 8080;
 
 async function main() {
   try {
