@@ -11,7 +11,7 @@ function QuotesMain() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const url = `${API_URL}quotes/`
+			const url = `${API_URL}/quotes/`
 			// const url = `api/quotes/`
 			// const url = `http://quoterhong.herokuapp.com/api/quotes/`
 			const response = await fetch(url, {
