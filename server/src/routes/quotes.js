@@ -3,9 +3,11 @@ import Quote from "../models/quote.js";
 
 const quotesRoutes = express.Router();
 
+console.log(quotesRoutes)
 quotesRoutes.get("/", async (req, res) => {
-  const quotes = await Quote.find();
-  res.json(quotes);
+  console.log(quotesRoutes)
+  // const quotes = await Quote.find();
+  // res.json(quotes);
 });
 
 quotesRoutes.post("/", async (req, res) => {
