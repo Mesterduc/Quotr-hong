@@ -33,6 +33,7 @@ function QuotesMain() {
 				const url = 'http://localhost:8080/api/quotes/'
 				const response = await fetch(url, {
 					method: 'POST',
+					mode: 'cors',
 					headers: {
 						'Content-Type': 'application/json',
 					},
