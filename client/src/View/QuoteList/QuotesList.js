@@ -9,7 +9,7 @@ function QuotesMain() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const url = 'http://localhost:8080/api/quotes'
+			const url = 'http://localhost:8080/api/quotes/'
 			const response = await fetch(url)
 			const data = await response.json()
 			setQuotes(data)
@@ -24,7 +24,7 @@ function QuotesMain() {
 				author: newAuthor,
 			}
 			const postData = async () => {
-				const url = 'http://localhost:8080/api/quotes'
+				const url = 'http://localhost:8080/api/quotes/'
 				const response = await fetch(url, {
 					method: 'POST',
 					headers: {
@@ -49,7 +49,7 @@ function QuotesMain() {
 				number: 1,
 			}
 			const like = async () => {
-				const url = 'http://localhost:8080/api/quotes'
+				const url = 'http://localhost:8080/api/quotes/'
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -76,7 +76,7 @@ function QuotesMain() {
 				number: -1,
 			}
 			const like = async () => {
-				const url = 'http://localhost:8080/api/quotes'
+				const url = 'http://localhost:8080/api/quotes/'
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -113,7 +113,7 @@ function changeLike(quotes, id, number){
 			comment: comment,
 			id: id,
 		}
-		const url = `http://localhost:8080/api/quotes/${id}`
+		const url = `http://localhost:8080/api/quotes/${id}/`
 		try {
 			const postComment = async () => {
 				const response = await fetch(url, {
