@@ -3,13 +3,14 @@ import { Router } from '@reach/router'
 
 import Quotes from './Quotes'
 import CreateQuotes from './CreateQuote'
+const API_URL = process.env.REACT_APP_API;
 
 function QuotesMain() {
 	const [quotes, setQuotes] = useState([])
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const url = '/api/quotes/'
+			const url = `${API_URL}/quotes/`
 			const response = await fetch(url, {
 				method: 'GET',
 				mode: 'cors',
@@ -18,6 +19,7 @@ function QuotesMain() {
 				},
 			})
 			const data = await response.json()
+			console.log(data)
 			setQuotes(data)
 		}
 		fetchData()
