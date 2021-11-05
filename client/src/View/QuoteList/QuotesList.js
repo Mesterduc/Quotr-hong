@@ -9,7 +9,7 @@ function QuotesMain() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const url = 'http://localhost:8080/api/quotes/'
+			const url = '/api/quotes/'
 			const response = await fetch(url, {
 				method: 'GET',
 				mode: 'cors',
