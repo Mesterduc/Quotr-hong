@@ -7,12 +7,13 @@ const API_URL = process.env.REACT_APP_API;
 
 function QuotesMain() {
 	const [quotes, setQuotes] = useState([])
+	const [quotes2, setQuotes2] = useState([])
 
 	useEffect(() => {
 		const fetchData = async () => {
-			// const url = `${API_URL}/quotes/`
+			const url = `${API_URL}/quotes/`
 			// const url = `api/quotes/`
-			const url = `http://quoterhong.herokuapp.com/api/quotes/`
+			// const url = `http://quoterhong.herokuapp.com/api/quotes/`
 			const response = await fetch(url, {
 				method: 'GET',
 				mode: 'cors',
@@ -35,7 +36,8 @@ function QuotesMain() {
 			}
 			const postData = async () => {
 				// const url = '/api/quotes/'
-				const url = 'http://quoterhong.herokuapp.com/api/quotes'
+				const url = `${API_URL}/quotes/`
+				// const url = 'http://quoterhong.herokuapp.com/api/quotes'
 				const response = await fetch(url, {
 					method: 'POST',
 					mode: 'cors',
@@ -61,7 +63,7 @@ function QuotesMain() {
 				number: 1,
 			}
 			const like = async () => {
-				const url = 'http://quoterhong.herokuapp.com/api/quotes/'
+				const url = `${API_URL}/quotes/`
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -88,7 +90,7 @@ function QuotesMain() {
 				number: -1,
 			}
 			const like = async () => {
-				const url = 'http://quoterhong.herokuapp.com/api/quotes/'
+				const url = `${API_URL}/quotes/`
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -125,7 +127,7 @@ function changeLike(quotes, id, number){
 			comment: comment,
 			id: id,
 		}
-		const url = `http://quoterhong.herokuapp.com/api/quotes/${id}/`
+		const url = `${API_URL}/quotes/${id}/`
 		try {
 			const postComment = async () => {
 				const response = await fetch(url, {

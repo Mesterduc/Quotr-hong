@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Comments from '../../Components/Comments/DisplayComments'
 import Likes from '../../Components/Likes/Likes'
+const API_URL = process.env.REACT_APP_API;
 
 function Quote(props) {
 	const { id } = props
@@ -9,7 +10,7 @@ function Quote(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const url = `http://quoterhong.herokuapp.com/api/quotes/${id}/`
+			const url = `${API_URL}/quotes/${id}/`
 			const response = await fetch(url)
 			const data = await response.json()
 			setQuote(data)
@@ -24,7 +25,7 @@ function Quote(props) {
 				number: 1,
 			}
 			const like = async () => {
-				const url = 'http://quoterhong.herokuapp.com/api/quotes/'
+				const url = `${API_URL}/quotes/`
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -51,7 +52,7 @@ function Quote(props) {
 				number: -1,
 			}
 			const like = async () => {
-				const url = 'http://quoterhong.herokuapp.com/api/quotes/'
+				const url = `${API_URL}/quotes/`
 				const response = await fetch(url, {
 					method: 'PUT',
 					headers: {
@@ -80,7 +81,7 @@ function addComment(comment, id) {
         comment: comment,
         id: id,
     }
-    const url = `http://quoterhong.herokuapp.com/api/quotes/${id}/`
+    const url = `${API_URL}/quotes/${id}/`
     try {
         const postComment = async () => {
             const response = await fetch(url, {
