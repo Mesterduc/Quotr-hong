@@ -1,19 +1,27 @@
-// import { useEffect, useState } from 'react'
-// import { Link, useLocation } from '@reach/router'
+import { useState } from 'react'
 
 function Quote(props) {
 	const { quote } = props
+	const [color] = useState(["red", "blue", "coral", "yellowgreen", "cyan", "brown", "cornflowerblue"])
 	
+	function randomColor(){
+		return color[Math.floor(Math.random() * color.length)]
+	}
+
 		return (
 			<div className='quote__container'>
-				<section key={quote._id} className='quote'>
+				<section 
+					key={quote._id} 
+					className='quote'
+					style={{backgroundImage: `linear-gradient(${randomColor()}, ${randomColor()})`}}
+				>
 					<p className='quote__quote'>
-						<strong>{quote.quote}</strong>
+						{quote.quote}
 					</p>
 					<p className='quote__author'>
-						<strong>Author: {quote.author}</strong>
+						Author: {quote.author}
 					</p>
-					<p>Likes: {quote.likes}</p>
+					{/* <p>Likes: {quote.likes}</p> */}
 				</section>
 			</div>
 		)

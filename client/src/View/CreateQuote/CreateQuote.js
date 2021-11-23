@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import { useState } from 'react'
 
 function CreateQuote(props) {
 	const { addQuote } = props
@@ -16,13 +16,13 @@ function CreateQuote(props) {
 							setNewAuthor(event.target.value)
 						}}
 					></input>
-						<textarea
-							placeholder='Insert quote'
-							onChange={(event) => {
-								setNewQuote(event.target.value)
-							}}
-							rows='5'
-						></textarea>
+					<textarea
+						placeholder='Insert quote'
+						onChange={(event) => {
+							setNewQuote(event.target.value)
+						}}
+						rows='5'
+					></textarea>
 				</article>
 				<button type='button' onClick={() => addQuote(newQuote, newAuthor)}>
 					Add Recipe

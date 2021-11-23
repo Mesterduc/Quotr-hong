@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import Quotes from './Quotes'
-import CreateQuotes from './CreateQuote'
 const API_URL = process.env.REACT_APP_API
 
-function QuotesMain() {
+function QuotesList() {
 	const [quotes, setQuotes] = useState([])
 
 	useEffect(() => {
@@ -151,8 +150,7 @@ function QuotesMain() {
 
 	return (
 		<>
-			<CreateQuotes addQuote={addQuote} />
-			<h1 className='quotes__header'>Display Quotes</h1>
+			<h1 className='quotes__header'>Gods Quotes</h1>
 			<ul>
 				<Quotes quotes={quotes} addLike={addLike} addDislike={dislike} addComment={addComment} />
 			</ul>
@@ -160,4 +158,4 @@ function QuotesMain() {
 	)
 }
 
-export default QuotesMain
+export default QuotesList

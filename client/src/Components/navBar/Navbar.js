@@ -4,9 +4,9 @@ import {Link } from '@reach/router'
 function navbar() {
 	return (
 		<>
-			<nav>
-				<Link to="/">Home</Link>
-				{/* <Link to="/hej">Quotes</Link> */}
+			<nav className="nav">
+				<Link className="nav__link" to="/">Home</Link>
+				<Link className="nav__link"to="/createQuote">Create</Link>
 			</nav>
 		</>
 	)
