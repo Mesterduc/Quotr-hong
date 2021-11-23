@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Comments from '../../Components/Comments/DisplayComments'
 import Likes from '../../Components/Likes/Likes'
-const API_URL = process.env.REACT_APP_API;
+const API_URL = process.env.REACT_APP_API
 
 function Quote(props) {
 	const { id } = props
@@ -18,7 +18,7 @@ function Quote(props) {
 		fetchData()
 	}, [])
 
-    function addLike(id) {
+	function addLike(id) {
 		try {
 			const data = {
 				id: id,
@@ -73,36 +73,36 @@ function Quote(props) {
 		}
 	}
 
-function changeLike(number){
-	setQuote({...quote, likes: quote.likes += number})
-}
-function addComment(comment, id) {
-    const data = {
-        comment: comment,
-        id: id,
-    }
-    const url = `${API_URL}/quotes/${id}/`
-    try {
-        const postComment = async () => {
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            const re = await response.json()
-            if (!response.ok) {
-                throw re
-            }
-            let newComment = [...quote.comments, comment]
-            setQuote({...quote, comments: newComment})
-        }
-        postComment()
-    } catch {
-        console.log('Fetch failled')
-    }
-}
+	function changeLike(number) {
+		setQuote({ ...quote, likes: (quote.likes += number) })
+	}
+	function addComment(comment, id) {
+		const data = {
+			comment: comment,
+			id: id,
+		}
+		const url = `${API_URL}/quotes/${id}/`
+		try {
+			const postComment = async () => {
+				const response = await fetch(url, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(data),
+				})
+				const re = await response.json()
+				if (!response.ok) {
+					throw re
+				}
+				let newComment = [...quote.comments, comment]
+				setQuote({ ...quote, comments: newComment })
+			}
+			postComment()
+		} catch {
+			console.log('Fetch failled')
+		}
+	}
 
 	return (
 		<>
@@ -114,10 +114,8 @@ function addComment(comment, id) {
 					<strong>~{quote.author}</strong>
 				</p>
 				<p>Likes: {quote.likes}</p>
-			<Likes id={quote._id} addLike={addLike} addDislike={dislike} />
-			{quote.comments && 
-				<Comments comments={quote.comments} id={quote._id}  addComment={addComment} />
-			}
+				<Likes id={quote._id} addLike={addLike} addDislike={dislike} />
+				{quote.comments && <Comments comments={quote.comments} id={quote._id} addComment={addComment} />}
 			</article>
 		</>
 	)

@@ -1,32 +1,27 @@
 import { useEffect, useState } from 'react'
-import { Router } from '@reach/router'
-
 import Quotes from './Quotes'
 import CreateQuotes from './CreateQuote'
-const API_URL = process.env.REACT_APP_API;
+const API_URL = process.env.REACT_APP_API
 
 function QuotesMain() {
 	const [quotes, setQuotes] = useState([])
-	const [quotes2, setQuotes2] = useState([])
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const url = `${API_URL}/quotes/`
-			// const url = `api/quotes/`
-			// const url = `http://quoterhong.herokuapp.com/api/quotes/`
-			const response = await fetch(url, {
-				method: 'GET',
-				mode: 'cors',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			const data = await response.json()
-			console.log(data)
-			setQuotes(data)
-		}
-		fetchData()
+		getQuotes()
 	}, [])
+
+	async function getQuotes() {
+		const url = `${API_URL}/quotes/`
+		const response = await fetch(url, {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+		const data = await response.json()
+		setQuotes(data)
+	}
 
 	function addQuote(newQuote, newAuthor) {
 		try {
@@ -35,9 +30,7 @@ function QuotesMain() {
 				author: newAuthor,
 			}
 			const postData = async () => {
-				// const url = '/api/quotes/'
 				const url = `${API_URL}/quotes/`
-				// const url = 'http://quoterhong.herokuapp.com/api/quotes'
 				const response = await fetch(url, {
 					method: 'POST',
 					mode: 'cors',
@@ -71,7 +64,7 @@ function QuotesMain() {
 					},
 					body: JSON.stringify(data),
 				})
-				const re = await response.json()
+				// const re = await response.json()
 				if (!response.ok) {
 					throw 'fejl'
 				}
@@ -98,7 +91,7 @@ function QuotesMain() {
 					},
 					body: JSON.stringify(data),
 				})
-				const re = await response.json()
+				// const re = await response.json()
 				if (!response.ok) {
 					throw 'fejl'
 				}
@@ -111,16 +104,16 @@ function QuotesMain() {
 		}
 	}
 
-function changeLike(quotes, id, number){
-	const changeQuote = quotes.map((quote) => {
-		if (quote._id == id) {
-			quote.likes += number
-		}
-		return quote
-	})
+	function changeLike(quotes, id, number) {
+		const changeQuote = quotes.map((quote) => {
+			if (quote._id == id) {
+				quote.likes += number
+			}
+			return quote
+		})
 
-	setQuotes(changeQuote)
-}
+		setQuotes(changeQuote)
+	}
 
 	function addComment(comment, id) {
 		const data = {
@@ -141,15 +134,13 @@ function changeLike(quotes, id, number){
 				if (!response.ok) {
 					throw re
 				}
-				const addToState = quotes.map((quote) => 
-				{
+				const addToState = quotes.map((quote) => {
 					if (quote._id == id) {
 						quote.comments.push(comment)
 					}
 					return quote
-				}
-				)
-		
+				})
+
 				setQuotes(addToState)
 			}
 			postComment()
