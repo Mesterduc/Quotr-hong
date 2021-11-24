@@ -25,6 +25,11 @@ textarea {
     flex-direction: column;
     margin: auto;
 }
+
+.quoteCreate__error {
+    color: rgb(95, 12, 12);
+}
+
 .quotes {
     position: relative;
 }
@@ -42,7 +47,6 @@ textarea {
     justify-content: center;
     align-items: top;
     height: 400px;
-    /* padding: 5px; */
 }
 
 .quote {
@@ -54,6 +58,7 @@ textarea {
     width: 50%;
     height: 350px;
     padding: 15px;
+    text-align: center;
 }
 .quote__quote {
     color: black;

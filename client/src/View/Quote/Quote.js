@@ -5,7 +5,7 @@ const API_URL = process.env.REACT_APP_API
 
 function Quote(props) {
 	const { id } = props
-
+	console.log(props)
 	const [quote, setQuote] = useState({})
 
 	useEffect(() => {
