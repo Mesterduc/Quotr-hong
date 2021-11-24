@@ -126,12 +126,15 @@ function App() {
 			console.log('Fetch failled')
 		}
 	}
+  function findQuote(id){
+      return quotes.find(quote =>  quote._id == id)
+  }
 	return (
 		<main>
 			<Navbar />
 			<Router>
 					<QuotesList path='/' quotes={quotes} addLike={addLike} addDislike={dislike} addComment={addComment}></QuotesList>
-					<Quote path='/quote/:id'></Quote>
+					<Quote path='/quote/:id' findQuote={findQuote}></Quote>
           <CreateQuote path='/createQuote/' ></CreateQuote>
 			</Router>
 		</main>

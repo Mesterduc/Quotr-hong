@@ -42,7 +42,7 @@ quotesRoutes.put("/", async (req, res) => {
   }
 });
 
-quotesRoutes.get("/:id", async (req, res) => {
+quotesRoutes.get("/quote/:id", async (req, res) => {
   try {
     const quote = await Quote.findById(req.params.id);
     if (quote) {

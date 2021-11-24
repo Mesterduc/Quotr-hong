@@ -1,23 +1,29 @@
 import { useEffect, useState } from 'react'
 import Comments from '../../Components/Comments/DisplayComments'
 import Likes from '../../Components/Likes/Likes'
+import Quotes from '../QuoteList/Quote'
 const API_URL = process.env.REACT_APP_API
 
 function Quote(props) {
-	const { id } = props
-	console.log(props)
+	const { id, findQuote } = props
 	const [quote, setQuote] = useState({})
-
+	
 	useEffect(() => {
-		const fetchData = async () => {
-			const url = `${API_URL}/quotes/${id}/`
-			const response = await fetch(url)
-			const data = await response.json()
-			setQuote(data)
+		if(findQuote(id)){
+			setQuote(findQuote(id))
+			console.log("1")
+		}else {
+			const fetchData = async () => {
+				const url = `${API_URL}/quotes/${id}`
+				const response = await fetch(url)
+				const data = await response.json()
+				setQuote(data)
+			}
+			fetchData()
+			console.log("fetch")
 		}
-		fetchData()
 	}, [])
-
+	
 	function addLike(id) {
 		try {
 			const data = {
@@ -105,19 +111,13 @@ function Quote(props) {
 	}
 
 	return (
-		<>
-			<article className='quote'>
-				<p className='quote__quote'>
-					<strong>{quote.quote}</strong>
-				</p>
-				<p className='quote__author'>
-					<strong>~{quote.author}</strong>
-				</p>
-				<p>Likes: {quote.likes}</p>
-				<Likes id={quote._id} addLike={addLike} addDislike={dislike} />
-				{quote.comments && <Comments comments={quote.comments} id={quote._id} addComment={addComment} />}
-			</article>
-		</>
+		<section>
+
+			<Quotes quote={quote} />
+			<h1>{quote.likes}</h1>
+			<Likes id={quote._id} addLike={addLike} addDislike={dislike} />
+			<Comments comments={quote.comments} id={quote._id} addComment={addComment} />
+		</section>
 	)
 }
 
